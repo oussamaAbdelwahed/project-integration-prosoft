@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <ProgressBar
+        android:id="@+id/spinner"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="168dp"
+        android:background="@color/white"
+        android:layoutDirection="locale"
+        android:maxHeight="200dp"
+        android:translationZ="1000dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/sfnsdisplay"
+            android:text="Gestion Des Projets"
+            android:textColor="#d11e48"
+            android:textSize="28.6sp" />
+
+        <TextView
+            android:id="@+id/mess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/maven_pro_regular"
+            android:text="se connecter pour continuer."
+            android:textColor="#444444"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#d3d3d3" />
+
+       <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="9dp"
+            android:background="#b9b9b9" />-->
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38.8dp"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:textColorHint="#d3d3d3" />
+
+       <!-- <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="9dp"
+            android:background="#b9b9b9" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Forgot Pass?"
+            android:textColor="#d3d3d3"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/circle"
+                android:src="@drawable/circle"
+                android:tint="#d11e48" />
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/whitearrow" />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>
