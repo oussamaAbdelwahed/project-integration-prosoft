@@ -6,9 +6,12 @@ import android.dsi32.org.proosoft_project.ProjectEmployeeDashboardActivity;
 import android.dsi32.org.proosoft_project.ProjectManagerDashboardActivity;
 import android.dsi32.org.proosoft_project.asynctasks.CheckAccessRightsTask;
 import android.dsi32.org.proosoft_project.asynctasks.RedirectDependingToRoleTask;
+import android.dsi32.org.proosoft_project.commons.BundleFiller;
 import android.dsi32.org.proosoft_project.services.AccessRightsService;
 import android.dsi32.org.proosoft_project.services.SharedPreferenceService;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -20,6 +23,7 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -74,7 +78,6 @@ public class Authentication extends AsyncTask<String,Void,Integer>{
 
     @Override
     protected void onPostExecute(Integer res) {
-
         if (res <= 0) {
             this.result.setText("login fail");
             this.loadingSpinner.setVisibility(View.INVISIBLE);
@@ -98,6 +101,8 @@ public class Authentication extends AsyncTask<String,Void,Integer>{
                     if((l=redirectDependingToRoleTask.get())!=null) {
                         if(l.size() >0) {
                             Intent intent = new Intent(this.context, ProjectManagerDashboardActivity.class);
+                            Bundle b = BundleFiller.fillBundleWithProjects(l);
+                            intent.putExtras(b);
                             this.context.startActivity(intent);
                         }else{
                             Intent intent = new Intent(this.context, ProjectEmployeeDashboardActivity.class);
@@ -113,11 +118,6 @@ public class Authentication extends AsyncTask<String,Void,Integer>{
             username.setEnabled(true);
             password.setEnabled(true);
             btnSubmit.setEnabled(true);
-            try {
-                Thread.currentThread().sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             this.loadingSpinner.setVisibility(View.INVISIBLE);
             super.onPostExecute(res);
         }

@@ -75,12 +75,18 @@ public class AccessRightsService {
 
     public List isAProjectManager() throws XmlRpcException{
         //this code is for checking if the connected user is a manager for at least un projet the we redirect him to view the list of the projects managed by him
-            List<Object> l = asList((Object[])xmlRpcClient.execute("execute_kw", asList(
+            List l = asList((Object[])xmlRpcClient.execute("execute_kw", asList(
                     context.getString(R.string.odoo_db_name), this.sharedPreferenceService.getUserId(), this.sharedPreferenceService.getPassword(),
-                    "project.project", "search",asList(asList(
+                    "project.project", "search_read",asList(asList(
                             asList("user_id", "=", this.sharedPreferenceService.getUserId()),
-                            asList("active", "=", true)))
+                            asList("active", "=", true))),
+                    new HashMap() {{
+                         put("fields", asList("name", "date", "date_start","task_count","id"));
+                         put("limit",10);
+                    }}
             )));
+            //,
+
             //,
         // asList("name","date","id","task_count","date_start")
             if(l.size()> 0){
