@@ -81,19 +81,11 @@ public class AccessRightsService {
                             asList("user_id", "=", this.sharedPreferenceService.getUserId()),
                             asList("active", "=", true))),
                     new HashMap() {{
-                         put("fields", asList("name", "date", "date_start","task_count","id"));
+                         put("fields", asList("name", "date_start","task_count","id"));
                          put("limit",10);
                     }}
             )));
-            //,
-
-            //,
-        // asList("name","date","id","task_count","date_start")
-            if(l.size()> 0){
-                Log.v("isManager","true");
-            }else {
-                Log.v("isManager", "false");
-            }
+            //"date"
             return l;
     }
 

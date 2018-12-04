@@ -1,28 +1,28 @@
 package android.dsi32.org.proosoft_project.models;
 
-public class Porject {
-    private Long id;
-    private String date,startDate,name;
+import java.io.Serializable;
+
+public class Project implements Serializable{
+    private Integer id;
+    private String endDate,startDate,name;
     private int taskNbr;
 
-    public Porject() {
+    public Project() { }
 
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setEndDate(String date) {
+        this.endDate = date;
     }
 
     public String getStartDate() {

@@ -3,9 +3,12 @@ package android.dsi32.org.proosoft_project.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProjectParcelable implements Parcelable{
+import java.io.Serializable;
+
+public class ProjectParcelable implements Parcelable,Serializable{
     private Integer id;
-    private String date,startDate,name;
+    String date;
+    private String startDate,name;
     private int taskNbr;
 
 
@@ -23,9 +26,7 @@ public class ProjectParcelable implements Parcelable{
 
 
 
-    public ProjectParcelable() {
-
-    }
+    public ProjectParcelable() {}
 
 
     protected ProjectParcelable(Parcel in) {
@@ -41,6 +42,18 @@ public class ProjectParcelable implements Parcelable{
     public int describeContents() {
         return 0;
     }
+
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(date);
+        dest.writeString(startDate);
+        dest.writeInt(taskNbr);
+        dest.writeLong(id);
+    }
+
 
     public Integer getId() {
         return id;
@@ -81,19 +94,6 @@ public class ProjectParcelable implements Parcelable{
     public void setTaskNbr(int taskNbr) {
         this.taskNbr = taskNbr;
     }
-
-
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(date);
-        dest.writeString(startDate);
-        dest.writeInt(taskNbr);
-        dest.writeLong(id);
-
-    }
-
 
     @Override
     public String toString() {

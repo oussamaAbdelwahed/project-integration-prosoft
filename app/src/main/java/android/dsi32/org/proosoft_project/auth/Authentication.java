@@ -7,6 +7,7 @@ import android.dsi32.org.proosoft_project.ProjectManagerDashboardActivity;
 import android.dsi32.org.proosoft_project.asynctasks.CheckAccessRightsTask;
 import android.dsi32.org.proosoft_project.asynctasks.RedirectDependingToRoleTask;
 import android.dsi32.org.proosoft_project.commons.BundleFiller;
+import android.dsi32.org.proosoft_project.models.Project;
 import android.dsi32.org.proosoft_project.services.AccessRightsService;
 import android.dsi32.org.proosoft_project.services.SharedPreferenceService;
 import android.os.AsyncTask;
@@ -21,6 +22,7 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
@@ -95,14 +97,13 @@ public class Authentication extends AsyncTask<String,Void,Integer>{
                     sharedPreferenceService.saveUserId(res);
                     this.result.setText("login success");
                     RedirectDependingToRoleTask redirectDependingToRoleTask = new RedirectDependingToRoleTask(accessRightsService);
-
                     redirectDependingToRoleTask.execute();
                     List l =null;
                     if((l=redirectDependingToRoleTask.get())!=null) {
-                        if(l.size() >0) {
+                        if(l.size() > 0) {
                             Intent intent = new Intent(this.context, ProjectManagerDashboardActivity.class);
-                            Bundle b = BundleFiller.fillBundleWithProjects(l);
-                            intent.putExtras(b);
+                            List<Project> projects = BundleFiller.getProjectsListFromRaw(l);
+                            intent.putExtra("listOfProjects", (Serializable) projects);
                             this.context.startActivity(intent);
                         }else{
                             Intent intent = new Intent(this.context, ProjectEmployeeDashboardActivity.class);
