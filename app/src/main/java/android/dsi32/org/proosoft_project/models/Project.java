@@ -48,4 +48,15 @@ public class Project implements Serializable{
     public void setTaskNbr(int taskNbr) {
         this.taskNbr = taskNbr;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", endDate='" + endDate + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", name='" + name + '\'' +
+                ", taskNbr=" + taskNbr +
+                '}';
+    }
 }

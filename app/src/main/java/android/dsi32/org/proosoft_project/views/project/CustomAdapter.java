@@ -13,21 +13,21 @@ import java.util.ArrayList;
 
 import static android.dsi32.org.proosoft_project.views.project.DataModel.*;
 
-public class CustomAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class CustomAdapter extends RecyclerView.Adapter<DataModel.MyViewHolder> {
     public ArrayList<DataModel> dataset;
     public CustomAdapter(ArrayList<DataModel> dataModels ){
         this.dataset=dataModels;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DataModel.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ligne_project,parent,false);
-        return new MyViewHolder(view);
+        return new DataModel.MyViewHolder(view);
     }
 
 
 
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DataModel.MyViewHolder holder, int position) {
         TextView textView=holder.textViewName;
         TextView managerView=holder.textViewManager;
         textView.setText(dataset.get(position).getName());
