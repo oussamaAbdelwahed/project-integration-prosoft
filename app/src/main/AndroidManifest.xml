@@ -14,11 +14,13 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ProjectManagerDashboardActivity" />
-        <activity android:name=".ProjectEmployeeDashboardActivity"></activity>
+        <activity android:name=".ProjectEmployeeDashboardActivity" />
+        <activity android:name=".ProjectTasksActivity"></activity>
     </application>
 
 </manifest>

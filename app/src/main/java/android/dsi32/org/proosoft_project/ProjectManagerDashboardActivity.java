@@ -22,6 +22,7 @@ public class ProjectManagerDashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_manager_dashboard);
         Bundle bundle = getIntent().getExtras();
@@ -29,7 +30,7 @@ public class ProjectManagerDashboardActivity extends AppCompatActivity {
         dataModels=new ArrayList<>();
         for(int i=0;i<ret.size();i++)
         {
-            dataModels.add(new DataModel(ret.get(i).getName(), String.valueOf(ret.get(i).getTaskNbr())));
+            dataModels.add(new DataModel(ret.get(i).getId(),ret.get(i).getName(), String.valueOf(ret.get(i).getTaskNbr())));
         }
 
         recyclerView=findViewById(R.id.list);
@@ -38,13 +39,12 @@ public class ProjectManagerDashboardActivity extends AppCompatActivity {
         adapter=new CustomAdapter(dataModels);
         recyclerView.setAdapter(adapter);
 
-        /*SharedPreferenceService s = new SharedPreferenceService(this);
+        /*
+        SharedPreferenceService s = new SharedPreferenceService(this);
         ProjectTaskService service = new ProjectTaskService(this,s);
 
-
-        Thread t = new Thread(() -> {
-            service.getProjectTasks(2);
-            //service.getEmployeeTasks();
+        Thread t = new Thread(()-> {
+            service.getProjectTasks(3);
         });
         t.start();*/
     }

@@ -26,12 +26,10 @@ public class BundleFiller {
             pp.setDate(String.valueOf(project.get("date")));
             pp.setStartDate(String.valueOf(project.get("date_start")));
             pp.setTaskNbr((Integer) project.get("task_count"));
-           // System.out.println(pp);
             l.add(pp);
         }
         Bundle bundle = new Bundle();
         bundle.putSerializable("listOfProjects",l);
-       // bundle.putParcelableArrayList("listOfProjects",l);
         return bundle;
     }
 
@@ -46,7 +44,6 @@ public class BundleFiller {
             p.setEndDate(String.valueOf(project.get("date")));
             p.setStartDate(String.valueOf(project.get("date_start")));
             p.setTaskNbr((Integer) project.get("task_count"));
-            //System.out.println(p);
             projects.add(p);
         }
         return projects;
@@ -63,19 +60,23 @@ public class BundleFiller {
             task.setDateStart(String.valueOf(tmp.get("date_start")));
             task.setDateEnd(String.valueOf(tmp.get("date_end")));
             task.setDateDeadline(String.valueOf(tmp.get("date_deadline")));
-            Set<String> keys = tmp.keySet();
-            Project p= new Project();
-            Object [] project = (Object[]) tmp.get("project_id");
-            Object [] assignedTo = (Object[]) tmp.get("user_id");
+            Project p = new Project();
             User u = new User();
-            u.setId((Integer) assignedTo[0]);
-            u.setName((String) assignedTo[1]);
-            p.setId((Integer) project[0]);
-            p.setName((String) project[1]);
+            if(!(tmp.get("project_id") instanceof Boolean)) {
+                Object[] project = (Object[]) tmp.get("project_id");
+                p.setId((Integer) project[0]);
+                p.setName((String) project[1]);
+            }  if(!(tmp.get("user_id") instanceof Boolean)) {
+                Object [] assignedTo = (Object[]) tmp.get("user_id");
+                u.setId((Integer) assignedTo[0]);
+                u.setName((String) assignedTo[1]);
+            }
             task.setProject(p);
             task.setUser(u);
             tasks.add(task);
         }
         return tasks;
     }
+
+
 }

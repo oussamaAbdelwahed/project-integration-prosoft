@@ -53,15 +53,8 @@ public class ProjectTaskService {
        } catch (XmlRpcException e) {
            e.printStackTrace();
        }
-       System.out.println("employee tasks count = "+tasks.size());
-       Iterator it = tasks.iterator();
-       while (it.hasNext()) {
-           Object tmp = it.next();
-           if(tmp instanceof Map) {
-               System.out.println("project id = "+((Map) tmp).get("id")+" project name "+((Map) tmp).get("name"));
-           }
-           System.out.println("class name  "+tmp.getClass().getName());
-       }
+
+
        return tasks;
    }
 
@@ -75,28 +68,43 @@ public class ProjectTaskService {
            List<String> projectionFields = new LinkedList<>();
            projectionFields.add("id");
            projectionFields.add("name");
-           projectionFields.add("project_id");
            projectionFields.add("date_start");
            projectionFields.add("date_end");
+           projectionFields.add("project_id");
+           projectionFields.add("user_id");
            projectionFields.add("date_deadline");
-           projectionObject.put("fields",new LinkedList(){{add("task_ids");}});
+           //
+           projectionObject.put("fields",projectionFields);
            tasks = asList((Object[])this.xmlRpcClient.execute("execute_kw", asList(
                    context.getString(R.string.odoo_db_name), id, password,
-                   "project.project", "search_read",asList(asList(
-                           asList("id", "=", projectId)
+                   "project.task", "search_read",asList(asList(
+                           asList("project_id", "=", projectId),
+                           asList("active", "=", true)
                    )),projectionObject
            )));
-           System.out.println("tasks l ist size : *****"+tasks.size());
+           /*System.out.println("tasks l ist size : *****"+tasks.size());
            Iterator it = tasks.iterator();
            while (it.hasNext()) {
-               HashMap<String,String> l = (HashMap<String, String>) it.next();
+               HashMap<String,Object> l = (HashMap<String, Object>) it.next();
                Set<String> s= l.keySet();
                Iterator<String> i = s.iterator();
                while (i.hasNext()) {
                    String tmp = (String) i.next();
-                   System.out.println(tmp+" "+String.valueOf(l.get(tmp)));
+                   if(tmp.equals("project_id")) {
+                       if(!(l.get(tmp) instanceof  Boolean)) {
+                           Object[] pro = (Object[]) l.get(tmp);
+                           System.out.println("task-project-id = " + pro[0] + " task-project-name = " + pro[1]);
+                       }
+                   }else if(tmp.equals("user_id")) {
+                       if(!(l.get(tmp) instanceof  Boolean)) {
+                         Object[] user = (Object[]) l.get(tmp);
+                          System.out.println("task-user-id = "+user[0]+" task-user-name = "+user[1]);
+                       }
+                   }else {
+                       System.out.println(tmp + " " + String.valueOf(l.get(tmp)));
+                   }
                }
-           }
+           }*/
        } catch (XmlRpcException e) {
            e.printStackTrace();
        }
