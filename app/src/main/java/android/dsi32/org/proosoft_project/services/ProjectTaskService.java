@@ -72,6 +72,7 @@ public class ProjectTaskService {
            projectionFields.add("date_end");
            projectionFields.add("project_id");
            projectionFields.add("user_id");
+           projectionFields.add("kanban_state");
            projectionFields.add("date_deadline");
            //
            projectionObject.put("fields",projectionFields);

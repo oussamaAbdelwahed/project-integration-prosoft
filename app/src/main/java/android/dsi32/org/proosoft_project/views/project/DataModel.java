@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class DataModel {
     private String name;
     private String manager;
+    private  Integer id;
 
     public void setName(String name) {
         this.name = name;
@@ -26,7 +27,7 @@ public class DataModel {
         this.id = id;
     }
 
-    private  Integer id;
+
     public DataModel(Integer id,String name,String manager){
         this.id = id;
         this.name=name;

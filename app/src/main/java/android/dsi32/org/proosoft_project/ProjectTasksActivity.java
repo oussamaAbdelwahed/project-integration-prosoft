@@ -48,9 +48,10 @@ public class ProjectTasksActivity extends AppCompatActivity {
                     dm.setName(employeeTasks.get(i).getName());
                     dm.setDate_deadline(employeeTasks.get(i).getDateDeadline());
                     dm.setDate_fin(employeeTasks.get(i).getDateEnd());
+                    dm.setState(employeeTasks.get(i).getState());
                     dataModels.add(dm);
                 }
-         
+
                 this.recyclerView.setLayoutManager(layoutManager);
                 adapter=new TaskAdapter(dataModels);
                 this.recyclerView.setAdapter(adapter);

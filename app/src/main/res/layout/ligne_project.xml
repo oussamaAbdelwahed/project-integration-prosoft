@@ -65,7 +65,10 @@
                 android:fontFamily="@font/maven_pro_medium"
                 android:text="Taches" />
 
+
         </LinearLayout>
+        <!-- to show a horizontal line-->
+
     </LinearLayout>
 
     <!--<View-->
@@ -78,5 +81,9 @@
     <!--&gt;-->
 
     <!--</View>-->
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>-->
 
 </RelativeLayout>

@@ -53,6 +53,7 @@ public class ProjectEmployeeDashboardActivity extends AppCompatActivity {
                     dm.setUsername(employeeTasks.get(i).getUser().getName());
                     dm.setName(employeeTasks.get(i).getName());
                     dm.setDate_deadline(employeeTasks.get(i).getDateDeadline());
+                    dm.setState(employeeTasks.get(i).getState());
                     dm.setDate_fin(employeeTasks.get(i).getDateEnd());
                     dataModels.add(dm);
                 }

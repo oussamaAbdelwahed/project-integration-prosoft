@@ -6,11 +6,22 @@ public class ProjectTask {
     private String dateStart;
     private String dateEnd;
     private String dateDeadline;
+    private String state;
+
+    public ProjectTask() {}
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     private Project project;
     private User user;
 
-    public ProjectTask() {}
+
 
     public User getUser() {
         return user;

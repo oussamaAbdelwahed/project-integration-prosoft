@@ -58,6 +58,7 @@ public class BundleFiller {
             task.setId((Integer) tmp.get("id"));
             task.setName((String) tmp.get("name"));
             task.setDateStart(String.valueOf(tmp.get("date_start")));
+            task.setState(String.valueOf(tmp.get("kanban_state")));
             task.setDateEnd(String.valueOf(tmp.get("date_end")));
             task.setDateDeadline(String.valueOf(tmp.get("date_deadline")));
             Project p = new Project();
