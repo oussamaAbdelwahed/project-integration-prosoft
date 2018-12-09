@@ -5,8 +5,18 @@ public class User {
     private String name;
     private String email;
     private String tel;
+    private String function;
 
     public User() {}
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
 
     public Integer getId() {
         return id;

@@ -1,5 +1,6 @@
 package android.dsi32.org.proosoft_project;
 
+import android.content.Intent;
 import android.dsi32.org.proosoft_project.models.Project;
 import android.dsi32.org.proosoft_project.models.ProjectParcelable;
 import android.dsi32.org.proosoft_project.services.ProjectTaskService;
@@ -11,6 +12,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +23,28 @@ public class ProjectManagerDashboardActivity extends AppCompatActivity {
     ArrayList<DataModel> dataModels;
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerView;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.logout_link:
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

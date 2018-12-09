@@ -21,6 +21,11 @@ public class LoginActivity extends AppCompatActivity {
     FrameLayout logIn;
     ProgressBar progressBar;
 
+    @Override
+    public  void onBackPressed() {
+
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

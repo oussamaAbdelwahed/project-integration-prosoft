@@ -7,21 +7,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DataModelTask {
+public class DataModelEmployeeTask {
     private String name;
     private String date_fin ;
     private String date_deadline;
-    private String username;
     private String state;
-    private Integer assignedToId;
 
-    public Integer getAssignedToId() {
-        return assignedToId;
-    }
-
-    public void setAssignedToId(Integer assignedToId) {
-        this.assignedToId = assignedToId;
-    }
 
 
 
@@ -33,22 +24,14 @@ public class DataModelTask {
         this.state = state;
     }
 
-    public DataModelTask() {}
+    public DataModelEmployeeTask() {}
 
-    public DataModelTask(String name,String date_fin,String date_deadline,String username) {
+    public DataModelEmployeeTask(String name,String date_fin,String date_deadline) {
         this.name = name;
         this.date_fin = date_fin;
         this.date_deadline=date_deadline;
-        this.username = username;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getName() {
         return name;
@@ -83,7 +66,6 @@ public class DataModelTask {
         ImageView task_done_circle;
         ImageView alert_echeance_icon;
         TextView alert_echeance_text;
-        Button button_assigned_to;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -93,10 +75,7 @@ public class DataModelTask {
             this.task_done_circle = itemView.findViewById(R.id.task_done_circle);
             this.alert_echeance_icon = itemView.findViewById(R.id.alert_echeance_icon);
             this.alert_echeance_text = itemView.findViewById(R.id.alert_echeance_text);
-            this.button_assigned_to = itemView.findViewById(R.id.button_assigned_to);
         }
 
     }
 }
-
-

@@ -87,17 +87,6 @@
                 android:text="details : "
                 android:visibility="invisible"
                 android:textColor="#d35400" />
-
-            <Button
-                android:id="@+id/button_assigned_to"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:layout_gravity="left"
-                android:accessibilityHeading="false"
-                android:background="@drawable/rect"
-                android:fontFamily="@font/maven_pro_medium"
-                android:text="Assigné a" />
         </LinearLayout>
 
         <LinearLayout

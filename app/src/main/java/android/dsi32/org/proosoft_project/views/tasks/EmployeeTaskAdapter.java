@@ -1,9 +1,7 @@
 package android.dsi32.org.proosoft_project.views.tasks;
 
 import android.dsi32.org.proosoft_project.R;
-import android.dsi32.org.proosoft_project.buttonsclicklisteners.OnBtnTaskAssignedToClick;
 import android.dsi32.org.proosoft_project.commons.DateUtility;
-import android.dsi32.org.proosoft_project.views.project.DataModel;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,29 +12,29 @@ import android.widget.TextView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import static android.dsi32.org.proosoft_project.views.tasks.DataModelTask.*;
-public class TaskAdapter extends RecyclerView.Adapter<DataModelTask.MyViewHolder> {
-    public ArrayList<DataModelTask> dataset;
-    public TaskAdapter(ArrayList<DataModelTask> dataModels ){
+
+
+
+
+public class EmployeeTaskAdapter extends RecyclerView.Adapter<DataModelEmployeeTask.MyViewHolder> {
+    public ArrayList<DataModelEmployeeTask> dataset;
+    public EmployeeTaskAdapter(ArrayList<DataModelEmployeeTask> dataModels ){
         this.dataset=dataModels;
     }
 
     @Override
-    public DataModelTask.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ligne_task,parent,false);
-        return new DataModelTask.MyViewHolder(view);
+    public DataModelEmployeeTask.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ligne_task_for_employee,parent,false);
+        return new DataModelEmployeeTask.MyViewHolder(view);
     }
 
 
-    public void onBindViewHolder(@NonNull DataModelTask.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DataModelEmployeeTask.MyViewHolder holder, int position) {
         TextView textView=holder.textViewName;
         TextView textViewdate_fin=holder.textViewdate_fin;
         TextView textViewdate_deadline=holder.textViewdate_deadline;
         ImageView task_done_circle = holder.task_done_circle;
         String state = dataset.get(position).getState();
-        //this.dataset.get(position).get
-
-        holder.button_assigned_to.setOnClickListener(new OnBtnTaskAssignedToClick(this.dataset.get(position).getAssignedToId()));
 
         if(state.equals("done")) {
             holder.task_done_circle.setVisibility(View.VISIBLE);

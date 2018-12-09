@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -25,6 +28,28 @@ public class ProjectTasksActivity extends AppCompatActivity {
     ArrayList<DataModelTask> dataModels;
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerView;
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.logout_link:
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +74,7 @@ public class ProjectTasksActivity extends AppCompatActivity {
                     dm.setDate_deadline(employeeTasks.get(i).getDateDeadline());
                     dm.setDate_fin(employeeTasks.get(i).getDateEnd());
                     dm.setState(employeeTasks.get(i).getState());
+                    dm.setAssignedToId(employeeTasks.get(i).getUser().getId());
                     dataModels.add(dm);
                 }
 
