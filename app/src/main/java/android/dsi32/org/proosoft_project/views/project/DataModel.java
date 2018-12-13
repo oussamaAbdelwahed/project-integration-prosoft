@@ -1,6 +1,7 @@
 package android.dsi32.org.proosoft_project.views.project;
 
 import android.dsi32.org.proosoft_project.R;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +48,7 @@ public class DataModel {
    public static class MyViewHolder extends RecyclerView.ViewHolder {
          TextView textViewName;
          TextView textViewManager;
-         Button button;
+       AppCompatImageView button;
 
 
         public MyViewHolder(View itemView) {
