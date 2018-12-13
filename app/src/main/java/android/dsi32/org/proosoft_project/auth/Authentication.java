@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Authentication extends AsyncTask<String,Void,Integer>{
-    private static final String ODDOO_SERVER_URL="http://192.168.1.3:8069";
+    private static final String ODDOO_SERVER_URL="http://192.168.1.4:8069";
     private static final String ODOO_DB_NAME="db_test_java_rpc";
     private ProgressBar loadingSpinner;
     public TextView result;
