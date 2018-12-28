@@ -113,5 +113,39 @@ public class ProjectTaskService {
        return tasks;
    }
 
+    public boolean updateTaskStatus(Integer taskId, boolean state) {
+        Integer id = this.sharedPreferenceService.getUserId();
+        String password = this.sharedPreferenceService.getPassword();
+        try {
+            if(state) {
+                xmlRpcClient.execute("execute_kw", asList(
+                        context.getString(R.string.odoo_db_name), id, password,
+                        "project.task", "write",
+                        asList(
+                                asList(taskId),
+                                new HashMap() {{
+                                    put("kanban_state", "done");
+                                }}
+                        )
+                ));
+            }else{
+                xmlRpcClient.execute("execute_kw", asList(
+                        context.getString(R.string.odoo_db_name), id, password,
+                        "project.task", "write",
+                        asList(
+                                asList(taskId),
+                                new HashMap() {{
+                                    put("kanban_state", "normal");
+                                }}
+                        )
+                ));
+            }
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 
 }

@@ -50,6 +50,9 @@ public class BundleFiller {
     }
 
     public static  List<ProjectTask>  getTasksListFromRaw(List<Map<String,Object>> data) {
+            if(data==null) {
+                System.out.println("*****************DATA NULL***************");
+            }
         List<ProjectTask> tasks = new LinkedList<>();
         Iterator<Map<String,Object>> iterator = data.iterator();
         while(iterator.hasNext()) {

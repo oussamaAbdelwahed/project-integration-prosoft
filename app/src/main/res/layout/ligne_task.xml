@@ -106,18 +106,6 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button_task"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="10dp"
-                android:accessibilityHeading="false"
-                android:background="@drawable/rect"
-                android:fontFamily="@font/maven_pro_medium"
-                android:text="Activites" />
         </LinearLayout>
         <!--to show an horizontal line-->
 

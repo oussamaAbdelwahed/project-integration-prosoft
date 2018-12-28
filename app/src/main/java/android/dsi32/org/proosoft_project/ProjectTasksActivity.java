@@ -55,7 +55,8 @@ public class ProjectTasksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_tasks);
-        this.getProjectIdFromIntent();
+       this.getProjectIdFromIntent();
+        System.out.println("=********passed project id=********" +this.projectId);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         this.recyclerView=findViewById(R.id.listprojecttasks);
 
@@ -72,9 +73,11 @@ public class ProjectTasksActivity extends AppCompatActivity {
                     dm.setUsername(employeeTasks.get(i).getUser().getName());
                     dm.setName(employeeTasks.get(i).getName());
                     dm.setDate_deadline(employeeTasks.get(i).getDateDeadline());
+                    dm.setDate_start(employeeTasks.get(i).getDateStart());
                     dm.setDate_fin(employeeTasks.get(i).getDateEnd());
                     dm.setState(employeeTasks.get(i).getState());
                     dm.setAssignedToId(employeeTasks.get(i).getUser().getId());
+                    dm.setId(employeeTasks.get(i).getId());
                     dataModels.add(dm);
                 }
 

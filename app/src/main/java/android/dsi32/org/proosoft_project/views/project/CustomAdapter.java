@@ -34,10 +34,19 @@ public class CustomAdapter extends RecyclerView.Adapter<DataModel.MyViewHolder> 
 
     public void onBindViewHolder(@NonNull DataModel.MyViewHolder holder, int position) {
        holder.button.setOnClickListener(new OnBtnProjectTasksClick(dataset.get(position).getId()));
-        TextView textView=holder.textViewName;
-        TextView managerView=holder.textViewManager;
+        TextView nameView=holder.textViewName;
+        TextView startView=holder.textViewdateStart;
+        TextView endView= holder.textViewdateEnd;
+        TextView nbTask = holder.textViewNbTask;
+
+
+        nameView.setText(dataset.get(position).getName());
+        startView.setText(dataset.get(position).getDateStart());
+        endView.setText(dataset.get(position).getDateEnd());
+        nbTask.setText(dataset.get(position).getNbrTAsk());
+/*
         textView.setText(dataset.get(position).getName());
-        managerView.setText(dataset.get(position).getManager());
+        managerView.setText(dataset.get(position).getManager());*/
     }
 
 

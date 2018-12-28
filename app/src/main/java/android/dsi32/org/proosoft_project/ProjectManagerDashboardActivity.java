@@ -2,22 +2,17 @@ package android.dsi32.org.proosoft_project;
 
 import android.content.Intent;
 import android.dsi32.org.proosoft_project.models.Project;
-import android.dsi32.org.proosoft_project.models.ProjectParcelable;
-import android.dsi32.org.proosoft_project.services.ProjectTaskService;
-import android.dsi32.org.proosoft_project.services.SharedPreferenceService;
 import android.dsi32.org.proosoft_project.views.project.CustomAdapter;
 import android.dsi32.org.proosoft_project.views.project.DataModel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ProjectManagerDashboardActivity extends AppCompatActivity {
     ArrayList<DataModel> dataModels;
@@ -56,7 +51,13 @@ public class ProjectManagerDashboardActivity extends AppCompatActivity {
         dataModels=new ArrayList<>();
         for(int i=0;i<ret.size();i++)
         {
-            dataModels.add(new DataModel(ret.get(i).getId(),ret.get(i).getName(), String.valueOf(ret.get(i).getTaskNbr())));
+            if (String.valueOf(ret.get(i).getStartDate()).equals("true")||String.valueOf(ret.get(i).getStartDate()).equals("false")){
+                dataModels.add(new DataModel(ret.get(i).getId(),ret.get(i).getName(), String.valueOf(ret.get(i).getTaskNbr()),"non Fixé","non Fixé"));
+
+                System.out.println(ret.get(i).getEndDate());
+        } else{
+                dataModels.add(new DataModel(ret.get(i).getId(),ret.get(i).getName(), String.valueOf(ret.get(i).getTaskNbr()),String.valueOf(ret.get(i).getStartDate()),String.valueOf(ret.get(i).getEndDate())));
+            }
         }
 
         recyclerView=findViewById(R.id.list);

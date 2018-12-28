@@ -81,7 +81,7 @@ public class AccessRightsService {
                             asList("user_id", "=", this.sharedPreferenceService.getUserId()),
                             asList("active", "=", true))),
                     new HashMap() {{
-                         put("fields", asList("name", "date_start","task_count","id"));
+                         put("fields", asList("name", "date_start","task_count","id","date"));
                          put("limit",10);
                     }}
             )));

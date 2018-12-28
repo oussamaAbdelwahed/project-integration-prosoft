@@ -29,24 +29,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nametask"
+                    android:layout_width="291dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
                     android:padding="15dp"
                     android:text="TextView"
                     android:textColor="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/button_assigned_to"
+                    android:layout_width="39dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/information"
+                    android:padding="10dp" />
+
             </LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                style="@style/Animation.AppCompat.Tooltip"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="1"
+                android:background="@drawable/uperslider"
+                android:backgroundTint="@android:color/darker_gray"
+                android:backgroundTintMode="src_atop" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +82,7 @@
                     android:text="Date Debut" />
 
                 <TextView
-                    android:id="@+id/startdate"
+                    android:id="@+id/date_start"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -78,7 +98,7 @@
                     android:text="Date fin" />
 
                 <TextView
-                    android:id="@+id/endDate"
+                    android:id="@+id/date_end"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -92,27 +112,90 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/e"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Nombre De taches :" />
+                    android:text="Etat de Taches" />
 
                 <TextView
-                    android:id="@+id/nbTache"
+                    android:id="@+id/state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:text="TextView" />
 
-                <ImageView
-                    android:id="@+id/button_project"
-                    android:layout_width="16dp"
-                    android:layout_height="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Dead line :" />
+
+                <TextView
+                    android:id="@+id/date_deadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="6dp"
-                    app:srcCompat="@drawable/pinkarrow" />
+                    android:padding="10dp"
+                    android:text="TextView" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="State"
+                    android:textColor="@color/cardview_shadow_start_color" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/alertt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/circle_task_done"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:drawable/bottom_bar" />
+
+                <LinearLayout
+                    android:id="@+id/alert_echeance_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="271dp"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Dead line depasse"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/alert" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
